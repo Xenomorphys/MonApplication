@@ -1,0 +1,65 @@
+@model MonApplication.Models.Utilisateur
+
+<h2>Créer un utilisateur</h2>
+
+<form method="post" asp-action="create" asp-controller="AdminUtilisateur">
+
+    <div>
+        <label>Rôle</label>
+        <select asp-for="IdRole" name="Role">
+            <option value="1">Admin</option>
+            <option value="2">Client</option>
+        </select>
+    <span asp-validation-for="IdRole" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label>Localité</label>
+        <select asp-for="IdLocalite" name="Localite">
+            <option value="1">Bruxelles</option>
+            <option value="2">Anvers</option>
+            <option value="3">Leuvent</option>
+            <option value="4">Liege</option>
+            <option value="5">Namur</option>
+            <option value="6">Charleroi</option>
+            <option value="7">Mons</option>
+            <option value="8">Bruges</option>
+            <option value="9">Gand</option>
+        </select>
+        <span asp-validation-for="IdLocalite" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label>Nom</label>
+        <input type="text" asp-for="Nom" name="Nom" required>
+        <span asp-validation-for="Nom" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label>Prénom</label>
+        <input type="text" asp-for="Prenom" name="Prenom" required>
+        <span asp-validation-for="Prenom" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label>Adresse</label>
+        <input type="text" asp-for="Adresse" name="Adresse">
+        <span asp-validation-for="Adresse" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label>Email</label>
+        <input type="email" asp-for="Email" name="Email" required>
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label>Mot de passe</label>
+        <input type="password" asp-for="MotDePasse" name="MotDePasse" required>
+        <span asp-validation-for="MotDePasse" class="text-danger"></span>
+    </div>
+
+    <button type="submit">Créer l'utilisateur</button>
+</form>
+
+<a href="/admin/utilisateurs/list">Retour à la liste</a>

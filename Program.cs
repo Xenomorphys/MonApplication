@@ -1,7 +1,15 @@
+using Microsoft.EntityFrameworkCore;
+using MonApplication.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Connexion SQL Server
+builder.Services.AddDbContext<ECommerceDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddControllers();
 builder.Services.AddRazorPages();
+builder.Services.AddEndpointsApiExplorer();
 
 var app = builder.Build();
 
@@ -14,11 +22,10 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseRouting();
-
 app.UseAuthorization();
 
+app.MapControllers();
 app.MapStaticAssets();
 app.MapRazorPages()
    .WithStaticAssets();
